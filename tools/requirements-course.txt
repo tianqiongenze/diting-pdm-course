@@ -1,0 +1,10 @@
+# 课程实训环境依赖（学生端）
+# 注意：numpy 必须 < 2，部分旧 CPU（X86_V2 基线）在 numpy 2.x 下会 Illegal instruction
+litestar>=2.12,<3
+granian>=1.6,<2
+msgspec>=0.18,<1
+numpy>=1.26,<2
+pymysql>=1.1,<2
+pytest>=8,<9
+httpx>=0.27,<1
+multidict<7.2

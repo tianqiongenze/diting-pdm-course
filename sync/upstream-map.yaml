@@ -1,0 +1,130 @@
+# 上游 Diting-PdM → 课程仓库 的同步映射
+#
+# 规则：
+#   1. 上游任何文件变更，先在这里找到「影响哪些课程位置」，再同步内容；
+#   2. 没有映射的上游变更（unmapped）不忽略，需在 PROJECT_UPDATES.md 里人工判断；
+#   3. 映射是「责任人提示」，不是自动改写——自动改写只覆盖 AUTO-SNAPSHOT 区块。
+
+version: 1
+upstream:
+  path: ../Diting-PdM
+  repo: https://github.com/tianqiongenze/diting-pdm
+  mirror: https://gitee.com/enze_tian_qiong/diting-pdm
+
+# 关键事实快照：这些数字一变，全课程引用都要跟着变
+facts:
+  unit_tests:
+    pattern: '(\d{3})\s*单测'
+    sources: ["README.md", "docs/46_先进技术落地交付报告.md"]
+    targets: ["01_课程标准.md", "11_项目案例库与代码导览.md", "slides/src/content_m4.py"]
+  browser_tests:
+    pattern: '(\d{3})\s*浏览器'
+    sources: ["README.md", "docs/46_先进技术落地交付报告.md"]
+    targets: ["01_课程标准.md", "11_项目案例库与代码导览.md"]
+  doc_count:
+    pattern: 'COUNT_DOCS'
+    sources: ["docs"]
+    targets: ["00_课程总览.md", "11_项目案例库与代码导览.md"]
+  image_version:
+    pattern: '镜像\s*(\d+\.\d+\.\d+)'
+    sources: ["README.md", "docs/46_先进技术落地交付报告.md"]
+    targets: ["11_项目案例库与代码导览.md"]
+
+# 文件 → 课程位置
+map:
+  "docs/02_需求规格说明书.md":
+    decks: [2]
+    files: ["03_课程教学方案/01_模块一_认知与规格.md", "09_项目任务书/T02_需求规格与追溯矩阵.md"]
+  "docs/03_总体架构设计.md":
+    decks: [3]
+    files: ["03_课程教学方案/01_模块一_认知与规格.md"]
+  "docs/04_数据与模型架构.md":
+    decks: [4, 10, 11]
+    files: ["03_课程教学方案/01_模块一_认知与规格.md", "03_课程教学方案/03_模块三_决策智能.md"]
+  "docs/05_智能体Harness设计.md":
+    decks: [5, 6, 7, 9]
+    files: ["03_课程教学方案/02_模块二_智能体内核.md", "11_项目案例库与代码导览.md"]
+  "docs/06_接口与集成规范.md":
+    decks: [8]
+    files: ["03_课程教学方案/02_模块二_智能体内核.md"]
+  "docs/07_安全合规与AI治理.md":
+    decks: [7]
+    files: ["03_课程教学方案/02_模块二_智能体内核.md", "06_双元制本土化实施指南.md"]
+  "docs/08_测试与质量保证.md":
+    decks: [13]
+    files: ["03_课程教学方案/04_模块四_工程化交付.md"]
+  "docs/11_验收标准与上线检查单.md":
+    decks: [16]
+    files: ["04_考核评价与评分量表.md"]
+  "docs/15_DDD事件驱动与CQRS设计.md":
+    decks: [3]
+    files: ["03_课程教学方案/01_模块一_认知与规格.md"]
+  "docs/42_无头浏览器全端全链路测试报告.md":
+    decks: [13]
+    files: ["11_项目案例库与代码导览.md"]
+  "docs/44_雅迪多基地部署方案.md":
+    decks: [14]
+    files: ["03_课程教学方案/04_模块四_工程化交付.md"]
+  "docs/45_云边分布式部署交付报告.md":
+    decks: [14]
+    files: ["11_项目案例库与代码导览.md"]
+  "docs/46_先进技术落地交付报告.md":
+    decks: [5, 6, 9, 11, 15]
+    files: ["01_课程标准.md", "11_项目案例库与代码导览.md"]
+  "docs/47_文档一致性审计报告.md":
+    decks: []
+    files: ["11_项目案例库与代码导览.md"]
+  "specs/constitution.md":
+    decks: [7, 9, 10]
+    files: ["03_课程教学方案/02_模块二_智能体内核.md", "06_双元制本土化实施指南.md"]
+  "specs/004-harness运行时/spec.md":
+    decks: [5, 6, 7]
+    files: ["03_课程教学方案/02_模块二_智能体内核.md"]
+  "specs/005-世界模型反事实推演/spec.md":
+    decks: [11]
+    files: ["03_课程教学方案/03_模块三_决策智能.md"]
+  "specs/006-hermes受控技能沉淀/spec.md":
+    decks: [9]
+    files: ["03_课程教学方案/02_模块二_智能体内核.md"]
+  "specs/007-mcp规范对齐与安全/spec.md":
+    decks: [8]
+    files: ["03_课程教学方案/02_模块二_智能体内核.md"]
+  "specs/008-a2a跨域协作/spec.md":
+    decks: [15]
+    files: ["03_课程教学方案/04_模块四_工程化交付.md"]
+  "impl/services/python-diagnosis/app/harness/loop.py":
+    decks: [6]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/harness/gate.py":
+    decks: [7]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/harness/tools.py":
+    decks: [5]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/mcp.py":
+    decks: [8]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/memory/skills.py":
+    decks: [9]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/world/model.py":
+    decks: [11]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/decision.py":
+    decks: [12]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/domain.py":
+    decks: [4, 10]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/repository.py":
+    decks: [14]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/packages/pdm_signal/pdm_signal/health.py":
+    decks: [4]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/a2a/agent.py":
+    decks: [15]
+    files: ["11_项目案例库与代码导览.md"]
+  "impl/services/python-diagnosis/app/model/registry.py":
+    decks: [15]
+    files: ["11_项目案例库与代码导览.md"]
