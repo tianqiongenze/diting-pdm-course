@@ -4,6 +4,8 @@
 > 课程载体：**谛听（Diting-PdM）设备预测性维护智能体平台** —— 雅迪电动车集团真实工程基线
 > 教学范式：**德国双元制本土化 + 行动导向六步法 + 项目驱动**
 > 适用专业：高职高专 人工智能技术应用 / 大数据技术 / 工业互联网技术（第 4–5 学期）
+>
+> **课程仓库**：[GitHub](https://github.com/tianqiongenze/diting-pdm-course) ｜ [Gitee 镜像](https://gitee.com/enze_tian_qiong/diting-pdm-course)
 
 ---
 
